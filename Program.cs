@@ -4,6 +4,8 @@ using EmployeeManagementAPI.Interfaces;
 using EmployeeManagementAPI.Services;
 using EmployeeManagementAPI.Mappings;
 using EmployeeManagementAPI.Middleware;
+using System.Security.AccessControl;
+using Azure.Identity;
 //creates application builder
 var builder = WebApplication.CreateBuilder(args);
 //Add services
@@ -20,6 +22,9 @@ builder.Services.AddDbContext<AppDbContext>(Options => Options.UseSqlServer(buil
 //register service and interface and using dependency injection
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<EmailService>();
+builder.Services.AddApplicationInSightsTelemetry();
+builder.Configuration.AddAzureKeyVault( new Uri 
+("https://YOURS-KEYVAULT-NAME.vault.azure.net/"), new DefaultAzureCredentitial());
 //builds application
 var app = builder.Build();
 //handles global exceptions//error
