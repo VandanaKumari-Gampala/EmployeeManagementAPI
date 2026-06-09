@@ -9,6 +9,7 @@
       "EmployeeManagementAPI/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
+          "Azure.Extensions.AspNetCore.Configuration.Secrets": "1.5.1",
           "Azure.Identity": "1.21.0",
           "Azure.Security.KeyVault.Secrets": "4.10.0",
           "MailKit": "4.15.1",
@@ -43,7 +44,7 @@
           }
         }
       },
-      "Azure.Core/1.53.0": {
+      "Azure.Core/1.54.0": {
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "10.0.3",
           "Microsoft.Extensions.Configuration.Abstractions": "10.0.3",
@@ -58,14 +59,27 @@
         },
         "runtime": {
           "lib/net8.0/Azure.Core.dll": {
-            "assemblyVersion": "1.53.0.0",
-            "fileVersion": "1.5300.26.21006"
+            "assemblyVersion": "1.54.0.0",
+            "fileVersion": "1.5400.26.22404"
+          }
+        }
+      },
+      "Azure.Extensions.AspNetCore.Configuration.Secrets/1.5.1": {
+        "dependencies": {
+          "Azure.Core": "1.54.0",
+          "Azure.Security.KeyVault.Secrets": "4.10.0",
+          "Microsoft.Extensions.Configuration": "10.0.3"
+        },
+        "runtime": {
+          "lib/net8.0/Azure.Extensions.AspNetCore.Configuration.Secrets.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.500.126.22903"
           }
         }
       },
       "Azure.Identity/1.21.0": {
         "dependencies": {
-          "Azure.Core": "1.53.0"
+          "Azure.Core": "1.54.0"
         },
         "runtime": {
           "lib/net8.0/Azure.Identity.dll": {
@@ -76,7 +90,7 @@
       },
       "Azure.Monitor.OpenTelemetry.Exporter/1.7.0": {
         "dependencies": {
-          "Azure.Core": "1.53.0",
+          "Azure.Core": "1.54.0",
           "OpenTelemetry.Extensions.Hosting": "1.15.1",
           "OpenTelemetry.PersistentStorage.FileSystem": "1.0.2"
         },
@@ -89,7 +103,7 @@
       },
       "Azure.Security.KeyVault.Secrets/4.10.0": {
         "dependencies": {
-          "Azure.Core": "1.53.0"
+          "Azure.Core": "1.54.0"
         },
         "runtime": {
           "lib/net8.0/Azure.Security.KeyVault.Secrets.dll": {
@@ -498,6 +512,18 @@
           }
         }
       },
+      "Microsoft.Extensions.Configuration/10.0.3": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.3",
+          "Microsoft.Extensions.Primitives": "10.0.3"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.326.7603"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/10.0.3": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "10.0.3"
@@ -805,6 +831,7 @@
       },
       "OpenTelemetry.Instrumentation.Http/1.15.0": {
         "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.3",
           "Microsoft.Extensions.Options": "10.0.3",
           "OpenTelemetry.Api.ProviderBuilderExtensions": "1.15.1"
         },
@@ -817,6 +844,7 @@
       },
       "OpenTelemetry.Instrumentation.SqlClient/1.15.0": {
         "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.3",
           "Microsoft.Extensions.Options": "10.0.3",
           "OpenTelemetry.Api.ProviderBuilderExtensions": "1.15.1"
         },
@@ -1174,12 +1202,19 @@
       "path": "automapper.extensions.microsoft.dependencyinjection/12.0.1",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512"
     },
-    "Azure.Core/1.53.0": {
+    "Azure.Core/1.54.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-x9c/toFMOtRrlTdFuE7rlGCVAduQzWVfKmLz5juj41zJAXEhYD5hluiUyyAEzJ6OxpBnKtiaBztzwpZITAVjtg==",
-      "path": "azure.core/1.53.0",
-      "hashPath": "azure.core.1.53.0.nupkg.sha512"
+      "sha512": "sha512-m6hHbx1q9+GCBZ5A9ykzFylPdTwscX2APH7PlnqV+yu+DH3RRtuIDJMRqdU17cMyinv0hCPofpegoyQ6qWPW7g==",
+      "path": "azure.core/1.54.0",
+      "hashPath": "azure.core.1.54.0.nupkg.sha512"
+    },
+    "Azure.Extensions.AspNetCore.Configuration.Secrets/1.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2Io9af/y8GH1jfu//BQrYcwb+MZOJG+au2KCv+ltWM6PBCghbhaDyZWDkYWNWIougZgoHtyKM0CnlGi+9XAu/A==",
+      "path": "azure.extensions.aspnetcore.configuration.secrets/1.5.1",
+      "hashPath": "azure.extensions.aspnetcore.configuration.secrets.1.5.1.nupkg.sha512"
     },
     "Azure.Identity/1.21.0": {
       "type": "package",
@@ -1327,6 +1362,13 @@
       "sha512": "sha512-GeOmafQn64HyQtYcI/Omv/D/YVHd1zEkWbP3zNQu4oC+usE9K0qOp0R8KgWWFEf8BU4tXuYbok40W0SjfbaK/A==",
       "path": "microsoft.entityframeworkcore.sqlserver/8.0.0",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration/10.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-H1Cjv2xmm7O3iAGmFTcnSM0ZhLQ/7SqefmAvSJoT1PbXoxeYc2fo0mCLn2JlVbr9E6YpoU9q/o0fI9neDJB0xQ==",
+      "path": "microsoft.extensions.configuration/10.0.3",
+      "hashPath": "microsoft.extensions.configuration.10.0.3.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration.Abstractions/10.0.3": {
       "type": "package",

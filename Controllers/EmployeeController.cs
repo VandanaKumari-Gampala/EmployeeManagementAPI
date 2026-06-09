@@ -8,6 +8,7 @@ using EmployeeManagementAPI.DTOs;
 using Microsoft.AspNetCore.SignalR;
 using EmployeeManagementAPI.Interfaces;
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 
 namespace EmployeeManagementAPI.Controllers
 {
@@ -18,17 +19,19 @@ namespace EmployeeManagementAPI.Controllers
         private readonly IMapper _mapper;
         private readonly IEmployeeService _employeeService;
         //
-        
-        public EmployeeController(IEmployeeService employeeService, IMapper mapper)
+        private readonly ILogger<EmployeeController> _logger;
+        public EmployeeController(IEmployeeService employeeService, IMapper mapper, ILogger<EmployeeController> logger)
         {
             _employeeService = employeeService;
             _mapper = mapper;
+            _logger = logger;
         }
  
         // GET: api/Employee
         [HttpGet]
         public async Task<IActionResult>GetEmployees()
         {
+            _logger.LogInformation("Fetching all employees");
             var employees = await _employeeService.GetEmployees();
             return Ok(employees);
         }
@@ -49,6 +52,7 @@ namespace EmployeeManagementAPI.Controllers
         [HttpPost]
         public  async Task<IActionResult>AddEmployee(CreateEmployeeDto dto)
         {
+            _logger.LogInformation("Add employee API triggered");
            var employee = _mapper.Map<Employee>(dto);
           
 
@@ -60,6 +64,7 @@ namespace EmployeeManagementAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployee(int id,UpdateEmployeeDto dto)
         {
+            _logger.LogInformation("Update employee API triggered");
              var employee = _mapper.Map<Employee>(dto);
 
  
@@ -76,6 +81,7 @@ namespace EmployeeManagementAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
+            _logger.LogInformation("Delete employee API triggered");
             var deleted = await _employeeService.DeleteEmployee(id);
  
             if (!deleted)

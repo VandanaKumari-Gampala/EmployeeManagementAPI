@@ -1,6 +1,10 @@
 using MailKit.Net.Smtp;
 using MimeKit;
-public class EmailService
+using Microsoft.Extensions.Configuration;
+using EmployeeManagementAPI.Interfaces;
+namespace EmployeeManagementAPI.Services
+{
+public class EmailService : IEmailService
 {
     private readonly IConfiguration _config;
     public EmailService(IConfiguration config)
@@ -31,7 +35,7 @@ public class EmailService
                 await
                 smtp.DisconnectAsync(true);
         }
-        catch
+        catch(Exception ex)
         {
             Console.WriteLine("Email sending failed (dummy config)");
         }
@@ -39,4 +43,4 @@ public class EmailService
         
         }
     }    
-    
+}
