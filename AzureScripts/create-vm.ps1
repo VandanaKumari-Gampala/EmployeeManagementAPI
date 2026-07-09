@@ -10,4 +10,4 @@ az vm open-port --resource-group
 DemoResourceGroup --name DemoVM --port
 3389
 # message
-Write-Host "Azure VM deployment script completed successfully."
+Write-Host "Azure VM deployment script completed successfully."  

@@ -12,11 +12,10 @@ namespace EmployeeManagementAPI.Data
         //optional:configure database models and add default data.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           modelBuilder.Entity<Employee>().HasData(
+            modelBuilder.Entity<Employee>().HasData(
             new Employee { Id =1,Name ="Ravi",Role = "Developer"},
             new Employee { Id =2,Name ="sita",Role = "Tester"}
            );
         }
     }
 }
-#pragma warning restore 

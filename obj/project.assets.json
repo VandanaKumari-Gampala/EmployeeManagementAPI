@@ -209,7 +209,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.OpenApi/8.0.27": {
+      "Microsoft.AspNetCore.OpenApi/8.0.28": {
         "type": "package",
         "dependencies": {
           "Microsoft.OpenApi": "1.4.3"
@@ -2364,10 +2364,10 @@
         "microsoft.applicationinsights.aspnetcore.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.OpenApi/8.0.27": {
-      "sha512": "lbjwtlQ1ICGKp3UyhoF9i4APpzX01CqtY8vVba2vL32Nm3v5ir9/FJ0PHXfxgsO5sr1Bb4KkCOH7FSauEHUgRQ==",
+    "Microsoft.AspNetCore.OpenApi/8.0.28": {
+      "sha512": "+cEj0SuUWCJygZa21fNDJOEVu8aOBnxqJkzg0dLJBzWzkT/NA6OEPpzTmok2KfaOwS+ZO3xI2fTftmxCAtlplA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.openapi/8.0.27",
+      "path": "microsoft.aspnetcore.openapi/8.0.28",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2375,7 +2375,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll",
         "lib/net8.0/Microsoft.AspNetCore.OpenApi.xml",
-        "microsoft.aspnetcore.openapi.8.0.27.nupkg.sha512",
+        "microsoft.aspnetcore.openapi.8.0.28.nupkg.sha512",
         "microsoft.aspnetcore.openapi.nuspec"
       ]
     },
@@ -5827,7 +5827,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.108/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.109/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
