@@ -26,3 +26,12 @@ jobs:
       run: dotnet build EmployeeProjects.sln --no-restore
     - name: Test
       run: dotnet test EmployeeProjects.sln --no-build --verbosity normal
+    -  name: Publish
+       run: dotnet publish EmployeeManagementAPI/EmployeeManagementAPI.csproj -c  Release -o ./publish
+
+
+    - name: Upload build arifacts 
+     uses: actions/upload-artifact@v4
+    with:
+       name: EmployeeManagementAPI
+       path: ./publish
