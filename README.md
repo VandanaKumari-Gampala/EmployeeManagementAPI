@@ -7,3 +7,4 @@ Features:
 - Email Functionality
 - Entity Framework Core
 - GitHub Actions CI Workflow
+Documentation updated for second PR.
