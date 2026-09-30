@@ -1,0 +1,92 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using EmployeeManagementAPI.Data;
+using EmployeeManagementAPI.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using EmployeeManagementAPI.DTOs;
+using Microsoft.AspNetCore.SignalR;
+using EmployeeManagementAPI.Interfaces;
+using AutoMapper;
+using Microsoft.Extensions.Logging;
+
+namespace EmployeeManagementAPI.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class EmployeeController : ControllerBase
+    { 
+        private readonly IMapper _mapper;
+        private readonly IEmployeeService _employeeService;
+        //
+        private readonly ILogger<EmployeeController> _logger;
+        public EmployeeController(IEmployeeService employeeService, IMapper mapper, ILogger<EmployeeController> logger)
+        {
+            _employeeService = employeeService;
+            _mapper = mapper;
+            _logger = logger;
+        }
+ 
+        // GET: api/Employee
+        [HttpGet]
+        public async Task<IActionResult>GetEmployees()
+        {
+            _logger.LogInformation("Fetching all employees");
+            var employees = await _employeeService.GetEmployees();
+            return Ok(employees);
+        }
+ 
+        // GET: api/Employee/1
+        [HttpGet("{id}")]
+        public async Task<IActionResult>GetEmployeeById(int id)
+        {
+            var employee = await _employeeService.GetEmployeeById(id);
+ 
+            if (employee == null)
+                return NotFound(new { Message = "Employee not found" });
+ 
+            return Ok(employee);
+        }
+ 
+        // POST: api/Employee
+        [HttpPost]
+        public  async Task<IActionResult>AddEmployee(CreateEmployeeDto dto)
+        {
+            _logger.LogInformation("Add employee API triggered");
+           var employee = _mapper.Map<Employee>(dto);
+          
+
+            var newEmployee = await _employeeService.AddEmployee(employee);
+            return Ok(newEmployee);
+        }
+ 
+        // PUT: api/Employee/1
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEmployee(int id,UpdateEmployeeDto dto)
+        {
+            _logger.LogInformation("Update employee API triggered");
+             var employee = _mapper.Map<Employee>(dto);
+
+ 
+            var updatedEmployee = await _employeeService.UpdateEmployee(id,employee);
+           if(updatedEmployee == null)
+           return NotFound(new
+           {
+               Message = "Employee not found"
+           });
+            return Ok(updatedEmployee);
+        }
+ 
+        // DELETE: api/Employee/1
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEmployee(int id)
+        {
+            _logger.LogInformation("Delete employee API triggered");
+            var deleted = await _employeeService.DeleteEmployee(id);
+ 
+            if (!deleted)
+                return NotFound(new { Message = "Employee not found" });
+            return Ok(new { Message = "Employee deleted successfully" });
+        }
+    }
+}
