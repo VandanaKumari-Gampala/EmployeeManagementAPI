@@ -24,6 +24,7 @@ namespace EmployeeManagementAPI.Controllers
         // CREATE LEAVE REQUEST
         // POST: api/LeaveRequest
         // ==================================================
+        [Authorize(Roles = "Admin,User")]
         [HttpPost]
         public IActionResult CreateLeaveRequest(LeaveRequest request)
         {
@@ -44,6 +45,7 @@ namespace EmployeeManagementAPI.Controllers
         // APPROVE LEAVE REQUEST
         // PUT: api/LeaveRequest/approve/1
         // ==================================================
+        [Authorize(Roles = "Admin")]
         [HttpPut("approve/{id}")]
         public IActionResult ApproveLeave(int id)
         {
@@ -70,6 +72,7 @@ namespace EmployeeManagementAPI.Controllers
         // REJECT LEAVE REQUEST
         // PUT: api/LeaveRequest/reject/1
         // ==================================================
+        [Authorize(Roles = "Admin")]
         [HttpPut("reject/{id}")]
         public IActionResult RejectLeave(int id)
         {
@@ -96,6 +99,7 @@ namespace EmployeeManagementAPI.Controllers
         // GET EMPLOYEE LEAVE HISTORY
         // GET: api/LeaveRequest/history/1
         // ==================================================
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("history/{employeeId}")]
         public IActionResult GetLeaveHistory(int employeeId)
         {

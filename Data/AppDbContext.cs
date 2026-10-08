@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using EmployeeManagementAPI.Models;
 
 namespace EmployeeManagementAPI.Data
@@ -41,17 +41,33 @@ namespace EmployeeManagementAPI.Data
             );
 
             // Seed Login User data
+
+            // Admin User
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
                     Id = 1,
                     UserName = "admin",
-                    Password = "admin123"
+                    Password = "admin123",
+                    Role = "Admin"
+                },
+
+                // Normal User
+                new User
+                {
+                    Id = 2,
+                    UserName = "user",
+                    Password = "user123",
+                    Role = "User"
                 }
             );
 
             // Configure One-to-Many Relationship
-            // One Employee -> Many Leave Requests
+
+            // One Employee
+            //        ↓
+            // Many Leave Requests
+
             modelBuilder.Entity<LeaveRequest>()
                 .HasOne<Employee>()
                 .WithMany(e => e.LeaveRequests)

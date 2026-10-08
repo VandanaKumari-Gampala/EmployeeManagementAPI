@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.SignalR;
 using EmployeeManagementAPI.Interfaces;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeManagementAPI.Controllers
 {
@@ -26,8 +27,9 @@ namespace EmployeeManagementAPI.Controllers
             _mapper = mapper;
             _logger = logger;
         }
- 
+
         // GET: api/Employee
+        [Authorize(Roles = "Admin,User")]
         [HttpGet]
         public async Task<IActionResult>GetEmployees()
         {
@@ -35,8 +37,9 @@ namespace EmployeeManagementAPI.Controllers
             var employees = await _employeeService.GetEmployees();
             return Ok(employees);
         }
- 
+
         // GET: api/Employee/1
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("{id}")]
         public async Task<IActionResult>GetEmployeeById(int id)
         {
@@ -47,8 +50,9 @@ namespace EmployeeManagementAPI.Controllers
  
             return Ok(employee);
         }
- 
+
         // POST: api/Employee
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public  async Task<IActionResult>AddEmployee(CreateEmployeeDto dto)
         {
@@ -59,8 +63,9 @@ namespace EmployeeManagementAPI.Controllers
             var newEmployee = await _employeeService.AddEmployee(employee);
             return Ok(newEmployee);
         }
- 
+
         // PUT: api/Employee/1
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployee(int id,UpdateEmployeeDto dto)
         {
@@ -76,8 +81,9 @@ namespace EmployeeManagementAPI.Controllers
            });
             return Ok(updatedEmployee);
         }
- 
+
         // DELETE: api/Employee/1
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
